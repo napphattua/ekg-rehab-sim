@@ -144,7 +144,8 @@ $('btn-sym').addEventListener('click', () => {
 });
 $('mute').addEventListener('click', () => {
   beeper.setMuted(!beeper.muted);
-  $('mute').textContent = beeper.muted ? '🔇 เสียงปิด' : '🔊 เสียงเปิด';
+  $('mute').textContent = beeper.muted ? 'เสียง: ปิด' : 'เสียง: เปิด';
+  $('mute').setAttribute('aria-pressed', String(beeper.muted));
 });
 
 menu();

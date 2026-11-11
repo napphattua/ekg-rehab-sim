@@ -63,7 +63,7 @@ export function showChart(c, onStart) {
 
 export function showDecision(step, onSubmit) {
   const el = open(
-    `<button class="peek" id="peek">👁 ดูคนไข้ / กลับมาตอบ</button>
+    `<button class="peek" id="peek">ดูคนไข้ / กลับมาตอบ</button>
     <div class="card decision">
       <h3>${step.question}</h3>
       <div class="actions">${ACTIONS.map((a) => `<label><input type="radio" name="action" value="${a.id}"> ${a.label}</label>`).join('')}</div>
