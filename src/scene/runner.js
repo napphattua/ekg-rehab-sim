@@ -132,7 +132,8 @@ export function createScene(container) {
   return {
     update(dt, { speed, cues }) {
       const v = speed / 3.6; // m/s
-      tm.tex.offset.x += ((v * dt) / tm.beltLength) * tm.tex.repeat.x;
+      // belt top runs backward (+x, away from the console); raising offset would scroll it forward
+      tm.tex.offset.x -= ((v * dt) / tm.beltLength) * tm.tex.repeat.x;
       const strideHz = speed > 0 ? 0.75 + speed * 0.06 : 0;
       phase += 2 * Math.PI * strideHz * dt;
       const amp = speed > 0 ? Math.min(0.55, 0.18 + speed * 0.06) : 0;
@@ -140,7 +141,8 @@ export function createScene(container) {
       person.legs.forEach((leg, i) => {
         const ph = phase + i * Math.PI;
         leg.hip.rotation.z = -amp * Math.sin(ph);
-        leg.knee.rotation.z = speed > 0 ? 0.08 + 0.75 * Math.max(0, -Math.cos(ph)) : 0;
+        // bend the knee while the leg swings forward (cos > 0); bending on the back-swing reads as walking backward
+        leg.knee.rotation.z = speed > 0 ? 0.08 + 0.75 * Math.max(0, Math.cos(ph)) : 0;
       });
 
       const grab = cues.includes('grabRail');
