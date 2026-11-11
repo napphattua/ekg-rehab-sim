@@ -23,7 +23,8 @@ export const CASES = [
     treadmill: { speed: 3.2, grade: 0 },
     endAt: 900,
     events: [
-      { at: 480, set: { artifact: 1, monitorHr: 176 } },
+      // 0.45: messy enough to trip the HR counter, while real QRS spikes still poke through
+      { at: 480, set: { artifact: 0.45, monitorHr: 176 } },
       { at: 660, set: { artifact: 0, monitorHr: null } },
     ],
     steps: [

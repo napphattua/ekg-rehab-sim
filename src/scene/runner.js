@@ -148,8 +148,8 @@ export function createScene(container) {
       person.arms.forEach((arm, i) => {
         const ph = phase + i * Math.PI;
         if (clutch && arm.side === 1) {
-          arm.shoulder.rotation.set(0.6, 0, -1.0); // hand to the chest
-          arm.elbow.rotation.z = -2.0;
+          arm.shoulder.rotation.set(0, -0.9, -0.3); // twist so the forearm folds across the body: hand on the sternum
+          arm.elbow.rotation.z = -1.9;
         } else if (grab) {
           arm.shoulder.rotation.set(-arm.side * 0.28, 0, -0.45); // reach out to the rail
           arm.elbow.rotation.z = -0.5;

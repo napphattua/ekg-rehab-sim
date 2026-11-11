@@ -4,8 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Rehab Monitor Sim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+Thai:wght@400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <header class="top">
+      <strong>Rehab Monitor Sim</strong>
+      <span class="draft-pill">ร่าง · ใช้ฝึกเท่านั้น</span>
+      <button id="mute">🔊 เสียงเปิด</button>
+    </header>
+    <main class="layout">
+      <section id="scene-wrap">
+        <div id="scene"></div>
+        <div id="overlay" hidden></div>
+      </section>
+      <section class="monitor">
+        <div class="mon-head"><span>Lead II · 25 mm/s</span><span>session <span id="clock">00:00</span></span></div>
+        <canvas id="ecg"></canvas>
+        <div class="numerics">
+          <div id="hr-box" class="num hr"><label>HR</label><b id="hr">--</b></div>
+          <div class="num spo2"><label>SpO₂ · PR</label><b><span id="spo2">--</span><small>% · </small><span id="pr">--</span></b></div>
+          <div class="num bp"><label>NIBP</label><b id="bp">--/--</b></div>
+          <div class="num rpe"><label>RPE (ถามล่าสุด)</label><b id="rpe">--</b></div>
+          <div class="num tm">
+            <label>ลู่วิ่ง</label>
+            <b><span id="speed">-</span><small> km/h · </small><span id="grade">-</span><small>% · </small><span id="mets">-</span><small> METs</small></b>
+          </div>
+        </div>
+        <div id="speech" class="speech" hidden></div>
+        <div class="controls">
+          <button id="btn-bp">วัด BP</button>
+          <button id="btn-rpe">ถาม RPE</button>
+          <button id="btn-sym">ถามอาการ</button>
+        </div>
+      </section>
+    </main>
+    <div id="rotate">หมุนจอเป็นแนวนอน หรือเปิดบนคอม/แท็บเล็ต</div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
